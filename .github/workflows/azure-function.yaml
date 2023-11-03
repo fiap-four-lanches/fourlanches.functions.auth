@@ -7,26 +7,29 @@ on:
 
 jobs:
   build:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v1
         with:
           java-version: '17' 
 
       - name: Build Azure Functions
+        shell: bash
         run: |
+          pushd './${{ env.POM_XML_DIRECTORY }}'
           mvn clean package
-          cp target/*.jar ./azure-functions
-        working-directory: ${{ github.workspace }}
+          popd
 
       - name: Deploy to Azure Functions
         uses: azure/functions-action@v1
         with:
           app-name: ${{ env.AZURE_FUNCTIONS_APP_NAME }}
-          package: ./azure-functions
+          package: .
           publish-profile: ${{ secrets.AZURE_FUNCTIONS_PUBLISH_PROFILE }}
+          respect-pom-xml: true
