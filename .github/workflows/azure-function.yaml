@@ -1,0 +1,32 @@
+name: Azure Functions Deployment
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17' 
+
+      - name: Build Azure Functions
+        run: |
+          mvn clean package
+          cp target/*.jar ./azure-functions
+        working-directory: ${{ github.workspace }}
+
+      - name: Deploy to Azure Functions
+        uses: azure/functions-action@v1
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONS_APP_NAME }}
+          package: ./azure-functions
+          publish-profile: ${{ secrets.AZURE_FUNCTIONS_PUBLISH_PROFILE }}
