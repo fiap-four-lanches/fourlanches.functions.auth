@@ -7,6 +7,7 @@ on:
 
 env:
   POM_XML_DIRECTORY: '.'
+  AZURE_FUNCTIONS_APP_NAME: 'eastus-fourlanches-auth-function'
 
 jobs:
   build:
