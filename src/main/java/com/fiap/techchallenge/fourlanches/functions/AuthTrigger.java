@@ -18,8 +18,12 @@ import java.util.Optional;
 @Component
 public class AuthTrigger {
 
+    private final CustomerRepository customerRepository;
+
     @Autowired
-    private CustomerRepository customerRepository;
+    public AuthTrigger(CustomerRepository repository) {
+        this.customerRepository = repository;
+    }
 
     @FunctionName("cpf-auth")
     public HttpResponseMessage run(
