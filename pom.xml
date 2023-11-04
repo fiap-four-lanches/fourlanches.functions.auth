@@ -23,7 +23,7 @@
         <spring-cloud-function-adapter-azure-web.version>4.1.0-SNAPSHOT
         </spring-cloud-function-adapter-azure-web.version>
         <!-- Spring Boot start class! -->
-        <start-class>com.fiap.techchallenge.fourlanches.functions.FourLanchesAuthApp</start-class>
+        <start-class>com.fiap.techchallenge.fourlanches.FourLanchesAuthApp</start-class>
 
         <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
         <functionAppRegion>westus</functionAppRegion>

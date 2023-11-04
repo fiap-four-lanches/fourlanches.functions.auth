@@ -1,4 +1,4 @@
-package com.fiap.techchallenge.fourlanches.functions;
+package com.fiap.techchallenge.fourlanches.entities;
 
 import jakarta.persistence.*;
 
