@@ -16,6 +16,7 @@ on:
 
 jobs:
   build:
+    name: java-mvn-ci
 
     runs-on: ubuntu-latest
 
