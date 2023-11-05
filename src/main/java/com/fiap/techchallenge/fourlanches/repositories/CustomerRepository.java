@@ -1,4 +1,5 @@
 package com.fiap.techchallenge.fourlanches.repositories;
+
 import com.fiap.techchallenge.fourlanches.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
